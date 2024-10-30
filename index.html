@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function injectStyledWord(word) {
+            const element = document.createElement("span");
+
+            element.className = "dizzy-styled-word";
+            element.textContent = word;
+
+            const textDiv = document.querySelector('.text');
+
+            textDiv.appendChild(element);
+        }
+
+        // Wait for DOM to load before running the script
+        document.addEventListener('DOMContentLoaded', function () {
+            injectStyledWord('Capture');
+        });
+    </script>
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://preview.redd.it/wwdc-2023-apple-logo-1920x1080-v0-xc7799ke8p4b1.jpg?auto=webp&s=c19946f5e5ff90ff822044d7262b758484a64ae1"
+            alt="Apple Logo">
+        <div class="text">
+            <span>Building the future </span><br />
+            <span>With new iPhone 16 </span><br />
+            <span>Ready, Set. </span>
+        </div>
+    </div>
+</body>
+
+</html>
