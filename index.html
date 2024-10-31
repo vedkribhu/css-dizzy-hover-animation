@@ -5,20 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        function injectStyledWord(word) {
-            const element = document.createElement("span");
+        function injectDizzyStyle() {
+            // Select all spans with the 'dizzy-styled-word' class
+            const styledWords = document.querySelectorAll('.dizzy-styled-word');
 
-            element.className = "dizzy-styled-word";
-            element.textContent = word;
+            styledWords.forEach((spanElement) => {
+                // Get the word content and create a new div to replace the original span
+                const word = spanElement.textContent;
+                const newDiv = document.createElement('div');
+                newDiv.classList.add('dizzy-styled-word');
 
-            const textDiv = document.querySelector('.text');
+                // Loop through each character in the word and create a span for each
+                word.split('').forEach((char, index) => {
+                    const charSpan = document.createElement('span');
+                    charSpan.textContent = char;
+                    newDiv.appendChild(charSpan); // Add each span to the new div
+                });
 
-            textDiv.appendChild(element);
+                // Replace the original span with the newly created div
+                spanElement.replaceWith(newDiv);
+            });
         }
 
         // Wait for DOM to load before running the script
         document.addEventListener('DOMContentLoaded', function () {
-            injectStyledWord('Capture');
+            injectDizzyStyle();
         });
     </script>
     <link rel="stylesheet" href="index.css">
@@ -33,6 +44,7 @@
             <span>Building the future </span><br />
             <span>With new iPhone 16 </span><br />
             <span>Ready, Set. </span>
+            <div class="dizzy-styled-word">Capture.</div>
         </div>
     </div>
 </body>

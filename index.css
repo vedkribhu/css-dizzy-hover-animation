@@ -9,23 +9,54 @@
     align-items: center;
     background-color: black;
     width: 100%;
+    height: 100%;
+
+    .text>span {
+        transition: opacity 0.3s ease;
+
+    }
 }
 
-.container .text {
-    .dizzy-styled-word {
-        color: #6502E2;
-    }
 
-    .dizzy-styled-word:hover {
+.container .text:has(.dizzy-styled-word:hover) {
+    >span {
+        opacity: 0.15;
+    }
+}
+
+
+.container .text .dizzy-styled-word {
+    color: #6202E2;
+    display: inline-flex;
+
+    :hover {
         cursor: pointer;
     }
-
-    :has(+ .dizzy-styled-word:hover) {
-        opacity: 0;
-    }
 }
 
+/* Base styles for all alphabet elements */
+[id^="dizzy-styled-alphabet-"] {
+    transition: all 0.3s ease;
 
+    /* Put transition on base state */
+    transform: translate(0, 0) rotate(0);
+    /* Define initial state */
+}
+
+/* Individual hover states */
+.dizzy-styled-word:hover>span {
+    transition: transform 0.3s ease;
+}
+
+/* Style for odd-numbered spans */
+.dizzy-styled-word:hover>span:nth-child(odd) {
+    transform: translate(0%, -20%) rotate(-0.05turn);
+}
+
+/* Style for even-numbered spans */
+.dizzy-styled-word:hover>span:nth-child(even) {
+    transform: rotate(0.05turn);
+}
 
 img {
     height: 300px;
